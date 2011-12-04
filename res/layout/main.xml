@@ -3,5 +3,8 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/cobonebackground">
+    android:background="@drawable/cobonebackground"
+    android:padding="7dp"
+    >
+
 </LinearLayout>

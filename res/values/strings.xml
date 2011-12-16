@@ -2,4 +2,5 @@
 <resources>
     <string name="hello">Hello World, CoboneActivity!</string>
     <string name="app_name">Cobone</string>
+
 </resources>

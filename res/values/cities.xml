@@ -1,0 +1,20 @@
+<resources>
+     <string name="cities_prompt">Choose City</string>   
+    <string-array name="cities_array">
+        <item>Riyadh</item>
+        <item>Jeddah</item>
+        <item>al-Dammam</item>
+        <item>Al Khobar</item>
+        <item>Cairo</item>
+        <item>Alexandria</item>
+        <item>Dubai</item>
+        <item>Abu Dhabi</item>
+        <item>Sharja</item>
+        <item>Almanama</item>
+        <item>Amman</item>
+        <item>Kuwait</item>
+        <item>Beirut</item>
+        <item>Doha</item>
+        
+    </string-array>
+</resources>

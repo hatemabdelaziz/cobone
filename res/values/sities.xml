@@ -1,0 +1,28 @@
+<resources>
+ <string name="sities_prompt">Choose Site</string>
+  <string-array name="sities_array">
+        <item>Cobone</item>
+        <item>Darendeal</item>
+        <item>Offerna</item>
+        <item>Souq</item>
+        <item>Dealgobbler</item>
+        <item>Dealsouk</item>
+        <item>Dealwaty</item>
+        <item>Dubib</item>
+        <item>El7a2</item>
+        <item>Fustuq</item>
+<!--         <item>Groupon.ae</item> -->
+        <item>Haladeals</item>
+        <item>joyoffer</item>
+        <item>kobonaty</item> 
+        <item>Livingsocial</item> 
+        <item>Makhsoom</item> 
+        <item>Moosavings</item> 
+        <item>Nailthedeal</item>
+        <item>Thescoupon</item> 
+        <item>Yallabanana</item>  
+        <item>yallabuyit</item> 
+        <item>sheeel</item>  
+          
+    </string-array>
+</resources>

@@ -14,10 +14,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.graphics.drawable.Drawable;
 import android.util.Log;
 
 public class JSONfunctions {
 
+	 
 	public static JSONObject getJSONfromURL(String url){
 		InputStream is = null;
 		String result = "";
@@ -58,4 +60,16 @@ public class JSONfunctions {
     
 	    return jArray;
 	}
+	 public static Drawable LoadImageFromWebOperations(String url)
+	    {
+	          try{
+//	        InputStream is = (InputStream) new URL(url).getContent();
+	        Drawable d = Drawable.createFromStream(((java.io.InputStream)new java.net.URL(url).getContent()), "name");
+	        return d;
+	      }catch (Exception e) {
+	        System.out.println("Exc="+e);
+	        Log.d("LEE","Exc"+e);
+	        return null;
+	      }
+	    }	
 }

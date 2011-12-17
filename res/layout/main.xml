@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:padding="7dp"
-	android:soundEffectsEnabled="true" android:weightSum="1" android:onClick="onClick" android:background="@drawable/cobonebackground">
+	android:soundEffectsEnabled="true" android:weightSum="1" android:background="@drawable/cobonebackground3">
+<!-- android:onClick="onClick" -->
 <!-- <ProgressBar -->
 	<!-- android:id="@android:id/progress" -->
 	<!-- style="?android:attr/progressBarStyleLarge" -->
@@ -11,5 +12,5 @@
 	<!-- android:layout_marginTop="60dp" android:layout_marginLeft="105dp"/> -->
 	<Spinner android:prompt="@string/cities_prompt" android:id="@+id/citiySpinner" android:layout_height="40dp" android:layout_width="160dp" android:layout_below="@+id/siteSpinner" android:layout_centerHorizontal="true" android:layout_marginTop="30dp"></Spinner>
 	<Spinner android:prompt="@string/sities_prompt" android:id="@+id/siteSpinner" android:layout_height="40dp" android:layout_width="wrap_content" android:layout_alignParentTop="true" android:layout_marginTop="108dp" android:layout_alignRight="@+id/citiySpinner" android:layout_alignLeft="@+id/citiySpinner"></Spinner>
-	<Button android:id="@+id/button1" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_below="@+id/citiySpinner" android:layout_alignLeft="@+id/citiySpinner" android:layout_marginLeft="33dp" android:layout_marginTop="18dp" android:text="Search Deals"></Button>
+	<Button android:id="@+id/searchdeals" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_below="@+id/citiySpinner" android:layout_alignLeft="@+id/citiySpinner" android:layout_marginLeft="33dp" android:layout_marginTop="18dp" android:text="Search Deals"></Button>
 </RelativeLayout>

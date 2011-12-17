@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class AndroidList extends ListActivity {
-	 
+	SharedPreferences sharedPreferences;
 	public class MyCustomAdapter extends ArrayAdapter<HashMap<String, String>> {
 		private final List<HashMap<String, String>> list;
 		private final Activity context;
@@ -56,7 +56,6 @@ public class AndroidList extends ListActivity {
 			price.setText(list.get(position).get("price"));
 			ImageView imgView=(ImageView)view.findViewById(R.id.imageView1);
 	         Drawable drawable = JSONfunctions.LoadImageFromWebOperations(list.get(position).get("photoUrl"));
-	         
 	         imgView.setImageDrawable(drawable);
 			
 			return view;
@@ -71,13 +70,17 @@ public class AndroidList extends ListActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.deallist);
+        sharedPreferences=getSharedPreferences("MYPRef", 0);
+        final SharedPreferences.Editor editor=sharedPreferences.edit();
         List<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
 	    String dealValue="";
 	    String dealPrice="";
 	    String dealCurrency="";	    
-        JSONObject json = JSONfunctions.getJSONfromURL("http://192.168.1.2:8080/dealAPP/searchdeals.htm");       
+	    String searchUrl="http://192.168.1.2:8080/dealAPP/searchdeals.htm?cityName="+sharedPreferences.getString("cityName","Riyadh")+"&siteName="+sharedPreferences.getString("siteName","Cobone");
+        JSONObject json = JSONfunctions.getJSONfromURL(searchUrl);       
         try{     	
         	JSONArray  earthquakes = json.getJSONArray("list"); 
+        	Toast.makeText(AndroidList.this, "deals size"+earthquakes.length(), Toast.LENGTH_LONG).show();
         	for(int i=0;i<earthquakes.length();i++){						
 				HashMap<String, String> map = new HashMap<String, String>();	
 				JSONObject e = earthquakes.getJSONObject(i);
@@ -95,8 +98,8 @@ public class AndroidList extends ListActivity {
         	 Log.e("log_tag", "Error parsing data "+e.toString());
         }
 //      requestWindowFeature(Window.FEATURE_PROGRESS);
-        SharedPreferences sharedPreferences=getSharedPreferences("MYPRef", 0);
-        final SharedPreferences.Editor editor=sharedPreferences.edit();
+         
+       
         setListAdapter(new MyCustomAdapter(AndroidList.this, R.layout.dealbrief, mylist));
         final ListView lv = getListView();
         lv.setTextFilterEnabled(true);	

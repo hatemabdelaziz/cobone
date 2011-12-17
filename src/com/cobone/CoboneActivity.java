@@ -1,23 +1,30 @@
 package com.cobone;
 
+
+
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 public class CoboneActivity extends Activity implements OnItemSelectedListener{
+	Button searchDealsBtn;
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-
-			Toast.makeText(CoboneActivity.this, " we search to you  about latest deals :)",
-					Toast.LENGTH_SHORT).show();
+		
+//			Toast.makeText(CoboneActivity.this, " we search to you  about latest deals :)",
+//					Toast.LENGTH_SHORT).show();
 		 setContentView(R.layout.main);
 		 Spinner siteSpinner = (Spinner) findViewById(R.id.siteSpinner);
 		    ArrayAdapter<CharSequence> siteadapter = ArrayAdapter.createFromResource(
@@ -31,11 +38,33 @@ public class CoboneActivity extends Activity implements OnItemSelectedListener{
 		    citySpinner.setAdapter(cityAdapter);
 		    citySpinner.setOnItemSelectedListener(CoboneActivity.this);
 		    siteSpinner.setOnItemSelectedListener(CoboneActivity.this);
+		    searchDealsBtn = (Button) findViewById(R.id.searchdeals);
+		    searchDealsBtn.setOnClickListener(new OnClickListener() {		 			
+	 			@Override
+	 			public void onClick(View v) {
+	 				Toast.makeText(CoboneActivity.this, " we search to you  about latest deals :)",
+					Toast.LENGTH_SHORT).show();
+
+					Intent intent = new Intent(CoboneActivity.this, AndroidList.class);
+					startActivity(intent);  
+				} 
+			});
 
 	}
 	  public void onItemSelected(AdapterView<?> parent,View view, int pos, long id) {
-          Toast.makeText(parent.getContext(), "The planet is " +parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
-        }
+		  SharedPreferences sharedPreferences=getSharedPreferences("MYPRef", 0);
+		  SharedPreferences.Editor editor=sharedPreferences.edit();
+		  if(parent.getId() == R.id.citiySpinner){
+			  editor.putString("cityName", parent.getItemAtPosition(pos).toString());
+//		     Toast.makeText(parent.getContext(),"The city is " +parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
+		  }
+		  else{
+			     editor.putString("siteName", parent.getItemAtPosition(pos).toString());
+//			     Toast.makeText(parent.getContext(),"The site is " +parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
+  
+		  }
+		  editor.commit();
+		 }
 
         public void onNothingSelected(AdapterView parent) {}
 //	public void onClick(View v)
@@ -50,24 +79,24 @@ public class CoboneActivity extends Activity implements OnItemSelectedListener{
 //		startActivity(intent);   
 //    }
 	
-	@Override
-	public void onWindowFocusChanged(boolean hasFocus) {
-		super.onWindowFocusChanged(hasFocus);
-
-		if (hasFocus) {
-			Toast.makeText(CoboneActivity.this, "we search to you  about latest deals :)",
-					Toast.LENGTH_SHORT).show();
-			Intent intent = new Intent(CoboneActivity.this,
-					AndroidList.class);
+//	@Override
+//	public void onWindowFocusChanged(boolean hasFocus) {
+//		super.onWindowFocusChanged(hasFocus);
+//
+//		if (hasFocus) {
+//			Toast.makeText(CoboneActivity.this, "we search to you  about latest deals :)",
+//					Toast.LENGTH_SHORT).show();
 //			Intent intent = new Intent(CoboneActivity.this,
-//					DealActivity.class);
-			
-			startActivity(intent);
-		} else {
-
-		}
-	}
-		
+//					AndroidList.class);
+////			Intent intent = new Intent(CoboneActivity.this,
+////					DealActivity.class);
+//			
+//			startActivity(intent);
+//		} else {
+//
+//		}
+//	}
+//		
 
 	
 

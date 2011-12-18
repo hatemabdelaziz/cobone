@@ -2,20 +2,21 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="#086AB5"
   >	
-  <TextView
-        android:id="@id/android:empty"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="No data"/>
+
         
     <ListView
 	 	android:id="@id/android:list"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_weight="1"
-	 	android:drawSelectorOnTop="false" />
-
+	 	android:drawSelectorOnTop="false" android:background="#086AB5"/>
+  <TextView
+        android:id="@id/android:empty"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="No data" android:background="@drawable/blueround" android:textSize="17dp" android:paddingLeft="10dp" android:textStyle="bold"/>
   
 
 </LinearLayout>

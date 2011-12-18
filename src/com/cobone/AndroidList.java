@@ -26,12 +26,12 @@ import android.widget.Toast;
 
 public class AndroidList extends ListActivity {
 	SharedPreferences sharedPreferences;
-	public class MyCustomAdapter extends ArrayAdapter<HashMap<String, String>> {
-		private final List<HashMap<String, String>> list;
+	public class MyCustomAdapter extends ArrayAdapter<HashMap<String, Object>> {
+		private final List<HashMap<String, Object>> list;
 		private final Activity context;
 		
 		public MyCustomAdapter(Activity  context, int textViewResourceId,
-				List<HashMap<String, String>> list) {
+				List<HashMap<String, Object>> list) {
 			super(context, textViewResourceId, list);
 			this.context = context;
 			this.list = list;
@@ -51,12 +51,12 @@ public class AndroidList extends ListActivity {
 				view = convertView;
 			}			
 			TextView title=(TextView)view.findViewById(R.id.item_title);
-			title.setText(list.get(position).get("title"));
+			title.setText((CharSequence) list.get(position).get("title"));
 			TextView price=(TextView)view.findViewById(R.id.textView2);
-			price.setText(list.get(position).get("price"));
+			price.setText((CharSequence) list.get(position).get("price"));
 			ImageView imgView=(ImageView)view.findViewById(R.id.imageView1);
-	         Drawable drawable = JSONfunctions.LoadImageFromWebOperations(list.get(position).get("photoUrl"));
-	         imgView.setImageDrawable(drawable);
+//	         Drawable drawable = JSONfunctions.LoadImageFromWebOperations(list.get(position).get("photoUrl"));
+	         imgView.setImageDrawable((Drawable) list.get(position).get("photoUrl"));
 			
 			return view;
 		}
@@ -72,7 +72,7 @@ public class AndroidList extends ListActivity {
         setContentView(R.layout.deallist);
         sharedPreferences=getSharedPreferences("MYPRef", 0);
         final SharedPreferences.Editor editor=sharedPreferences.edit();
-        List<HashMap<String, String>> mylist = new ArrayList<HashMap<String, String>>();
+        List<HashMap<String, Object>> mylist = new ArrayList<HashMap<String, Object>>();
 	    String dealValue="";
 	    String dealPrice="";
 	    String dealCurrency="";	    
@@ -82,7 +82,7 @@ public class AndroidList extends ListActivity {
         	JSONArray  earthquakes = json.getJSONArray("list"); 
         	Toast.makeText(AndroidList.this, "deals size"+earthquakes.length(), Toast.LENGTH_LONG).show();
         	for(int i=0;i<earthquakes.length();i++){						
-				HashMap<String, String> map = new HashMap<String, String>();	
+				HashMap<String, Object> map = new HashMap<String, Object>();	
 				JSONObject e = earthquakes.getJSONObject(i);
 				dealCurrency= e.getString("currency");
 				dealPrice=String.format("%.0f", Double.parseDouble(e.getString("price")));
@@ -91,8 +91,10 @@ public class AndroidList extends ListActivity {
 	        	map.put("title",e.getString("title"));
 	        	map.put("end",e.getString("end"));
 	        	map.put("price",dealPrice+" "+ dealCurrency+" ("+dealValue+" "+ dealCurrency+")");       	
-	        	map.put("photoUrl",e.getString("photo"));
-	        	mylist.add(map);
+//	        	map.put("photoUrl",e.getString("photo"));
+	        	  Drawable drawable = JSONfunctions.LoadImageFromWebOperations(e.getString("photo"));
+	        	  map.put("photoUrl",drawable);
+	        	  mylist.add(map);
         	}		
         }catch(JSONException e)        {
         	 Log.e("log_tag", "Error parsing data "+e.toString());

@@ -155,7 +155,6 @@ public class AndroidList extends ListActivity {
         setListAdapter(new MyCustomAdapter(AndroidList.this, R.layout.dealbrief, mylist ,items));
         final ListView lv = getListView();
         lv.setTextFilterEnabled(true);	
-        lv.setAdapter(adapter);
         lv.setOnItemClickListener(new OnItemClickListener() {
         	public void onItemClick(AdapterView<?> parent, View view, int position, long id) { 
 //        		Toast.makeText(AndroidList.this, "we get deal to you", Toast.LENGTH_SHORT).show(); 

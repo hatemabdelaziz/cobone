@@ -64,9 +64,9 @@ public class AndroidList extends ListActivity {
 			title.setText((CharSequence) list.get(position).get("title"));
 			TextView price=(TextView)view.findViewById(R.id.textView2);
 			price.setText((CharSequence) list.get(position).get("price"));
-			ImageView imgView=(ImageView)view.findViewById(R.id.imageView1);
+//			ImageView imgView=(ImageView)view.findViewById(R.id.imageView1);
 //	         Drawable drawable = JSONfunctions.LoadImageFromWebOperations(list.get(position).get("photoUrl"));
-	         imgView.setImageDrawable((Drawable) list.get(position).get("photoUrl"));
+//	         imgView.setImageDrawable((Drawable) list.get(position).get("photoUrl"));
 	         ImageView image=(ImageView)view.findViewById(R.id.imageView1);
 	         //text.setText("item "+position);
 	         imageLoader.DisplayImage(data[position], image);

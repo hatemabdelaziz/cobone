@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:padding="7dp"
-	android:soundEffectsEnabled="true" android:weightSum="1" android:background="@drawable/cobonebackground3">
+	android:soundEffectsEnabled="true" android:weightSum="1" android:background="@drawable/halalbackgroundpng">
 <!-- android:onClick="onClick" -->
 <!-- <ProgressBar -->
 	<!-- android:id="@android:id/progress" -->
@@ -10,7 +10,9 @@
 	<!-- android:layout_width="wrap_content" -->
 	<!-- android:layout_height="wrap_content" -->
 	<!-- android:layout_marginTop="60dp" android:layout_marginLeft="105dp"/> -->
-	<Spinner android:prompt="@string/cities_prompt" android:id="@+id/citiySpinner" android:layout_height="40dp" android:layout_width="160dp" android:layout_below="@+id/siteSpinner" android:layout_centerHorizontal="true" android:layout_marginTop="30dp"></Spinner>
-	<Spinner android:prompt="@string/sities_prompt" android:id="@+id/siteSpinner" android:layout_height="40dp" android:layout_width="wrap_content" android:layout_alignParentTop="true" android:layout_marginTop="108dp" android:layout_alignRight="@+id/citiySpinner" android:layout_alignLeft="@+id/citiySpinner"></Spinner>
-	<Button android:id="@+id/searchdeals" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_below="@+id/citiySpinner" android:layout_alignLeft="@+id/citiySpinner" android:layout_marginLeft="33dp" android:layout_marginTop="18dp" android:text="Search Deals"></Button>
+	<Spinner android:prompt="@string/sities_prompt" android:id="@+id/siteSpinner" android:layout_height="40dp" android:layout_alignParentTop="true" android:layout_marginTop="108dp" android:layout_alignLeft="@+id/citiySpinner" android:layout_width="0dp"></Spinner>
+	<Spinner android:id="@+id/citiySpinner" android:prompt="@string/cities_prompt" android:layout_below="@+id/siteSpinner" android:layout_alignParentLeft="true" android:layout_marginLeft="64dp" android:layout_marginTop="28dp" android:layout_toLeftOf="@+id/searchdeals" android:layout_width="0dp" android:layout_height="0dp"></Spinner>
+	<Button  android:background="@drawable/trans_round" android:textStyle="bold" android:textColor="#ffffff"  android:text="Search Deals" android:layout_height="40dp" android:textSize="18dp" android:id="@+id/searchdeals" android:layout_below="@+id/sitebtn" android:layout_centerHorizontal="true" android:layout_marginTop="123dp" android:width="230dp" android:layout_width="230dp" android:focusable="true"></Button>
+	<Button  android:background="@drawable/trans_round" android:height="40dp" android:drawableRight="@drawable/greenarro" android:layout_height="wrap_content" android:id="@+id/citybtn" android:layout_below="@+id/sitebtn" android:layout_alignLeft="@+id/searchdeals" android:layout_marginTop="40dp" android:textSize="18dp" android:textColor="#ffffff" android:textStyle="bold" android:layout_width="230dp"></Button>
+	<Button android:height="40dp" android:drawableRight="@drawable/greenarro" android:textStyle="bold" android:background="@drawable/trans_round" android:layout_height="wrap_content" android:layout_width="wrap_content" android:width="230dp" android:textSize="18dp" android:id="@+id/sitebtn" android:layout_alignParentTop="true" android:layout_alignLeft="@+id/citybtn" android:layout_marginTop="102dp" android:textColor="#ffffff"></Button>
 </RelativeLayout>

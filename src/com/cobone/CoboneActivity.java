@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 public class CoboneActivity extends Activity implements OnItemSelectedListener{
 	Button searchDealsBtn;
+	Button siteBtn;
+	Button cityBtn;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -26,19 +28,39 @@ public class CoboneActivity extends Activity implements OnItemSelectedListener{
 //			Toast.makeText(CoboneActivity.this, " we search to you  about latest deals :)",
 //					Toast.LENGTH_SHORT).show();
 		 setContentView(R.layout.main);
-		 Spinner siteSpinner = (Spinner) findViewById(R.id.siteSpinner);
+		 final Spinner siteSpinner = (Spinner) findViewById(R.id.siteSpinner);
 		    ArrayAdapter<CharSequence> siteadapter = ArrayAdapter.createFromResource(
 		            this, R.array.sities_array, android.R.layout.simple_spinner_item);
 		    siteadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		    siteSpinner.setAdapter(siteadapter);
-		 Spinner citySpinner = (Spinner) findViewById(R.id.citiySpinner);
+		 final Spinner citySpinner = (Spinner) findViewById(R.id.citiySpinner);
 		    ArrayAdapter<CharSequence> cityAdapter = ArrayAdapter.createFromResource(
 		            this, R.array.cities_array, android.R.layout.simple_spinner_item);
 		    cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		    citySpinner.setAdapter(cityAdapter);
 		    citySpinner.setOnItemSelectedListener(CoboneActivity.this);
 		    siteSpinner.setOnItemSelectedListener(CoboneActivity.this);
+		   
 		    searchDealsBtn = (Button) findViewById(R.id.searchdeals);
+		    siteBtn = (Button) findViewById(R.id.sitebtn);
+		    cityBtn = (Button) findViewById(R.id.citybtn);
+		    
+		    siteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+               public void onClick(View v) {
+                   // TODO Auto-generated method stub
+                	siteSpinner.performClick();
+               }
+           });
+		    
+		    cityBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+               public void onClick(View v) {
+                   // TODO Auto-generated method stub
+                	citySpinner.performClick();
+               }
+           });
+		    
 		    searchDealsBtn.setOnClickListener(new OnClickListener() {		 			
 	 			@Override
 	 			public void onClick(View v) {
@@ -49,6 +71,8 @@ public class CoboneActivity extends Activity implements OnItemSelectedListener{
 					startActivity(intent);  
 				} 
 			});
+		 
+		    
 
 	}
 	  public void onItemSelected(AdapterView<?> parent,View view, int pos, long id) {
@@ -56,10 +80,12 @@ public class CoboneActivity extends Activity implements OnItemSelectedListener{
 		  SharedPreferences.Editor editor=sharedPreferences.edit();
 		  if(parent.getId() == R.id.citiySpinner){
 			  editor.putString("cityName", parent.getItemAtPosition(pos).toString());
+			  cityBtn.setText(parent.getItemAtPosition(pos).toString());
 //		     Toast.makeText(parent.getContext(),"The city is " +parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
 		  }
 		  else{
 			     editor.putString("siteName", parent.getItemAtPosition(pos).toString());
+			     siteBtn.setText(parent.getItemAtPosition(pos).toString());
 //			     Toast.makeText(parent.getContext(),"The site is " +parent.getItemAtPosition(pos).toString(), Toast.LENGTH_LONG).show();
   
 		  }
